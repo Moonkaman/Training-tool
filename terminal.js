@@ -91,13 +91,13 @@ function monthToNum(month) {
 }
 
 function checkAll() {
-  checkAns(formInputs[0].value === customer.firstName, formInputs[0]);
-  checkAns(formInputs[1].value === customer.lastName, formInputs[1]);
+  checkAns(formInputs[0].value.trim() === customer.firstName, formInputs[0]);
+  checkAns(formInputs[1].value.trim() === customer.lastName, formInputs[1]);
   checkAns(formInputs[2].value == monthToNum(customer.birthMonth), formInputs[2]);
   checkAns(formInputs[3].value == customer.birthDay, formInputs[3]);
   checkAns(formInputs[4].value == customer.birthYear, formInputs[4]);
-  checkAns(formInputs[5].value == customer.email, formInputs[5]);
-  checkAns(formInputs[6].value == customer.address, formInputs[6]);
+  checkAns(formInputs[5].value.trim() == customer.email, formInputs[5]);
+  checkAns(formInputs[6].value.trim() == customer.address, formInputs[6]);
   checkAns(formInputs[7].value == customer.phoneNumber.slice(0,3), formInputs[7]);
   checkAns(formInputs[8].value == customer.phoneNumber.slice(3,6), formInputs[8]);
   checkAns(formInputs[9].value == customer.phoneNumber.slice(6,10), formInputs[9]);
@@ -121,7 +121,6 @@ function canMoveOn() {
       right += 1;
     }
   });
-  console.log(right + ' : ' + formInputs.length);
   if(right == formInputs.length) {
     formSubmit.textContent = 'Next';
     formSubmit.addEventListener('click', _ => {
