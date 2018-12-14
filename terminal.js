@@ -18,6 +18,7 @@ logBtn.addEventListener('click', _ => {
     userH1.textContent = username;
     login.style.display = 'none';
     theForm.style.display = 'block';
+    timer();
     //terminal.style.display = 'block'
   } else {
     wrongPass.style.display = 'block';
@@ -30,6 +31,7 @@ login.addEventListener('keypress', event => {
       userH1.textContent = username;
       login.style.display = 'none';
       theForm.style.display = 'block';
+      timer();
       //terminal.style.display = 'block'
     } else {
       wrongPass.style.display = 'block';
@@ -57,6 +59,38 @@ theForm.addEventListener('keypress', event => {
 });
 
 formSubmit.addEventListener('click', _ => checkAll());
+
+function timer() {
+  let theTimer = document.querySelector('.timer-cont h3');
+  let digit1 = 0;
+  let digit2 = 0;
+  let digit3 = 0;
+  let digit4 = 1;
+
+  theTimer.innerHTML = `<i class="fas fa-clock"></i> ${digit1}${digit2}:${digit3}${digit4}`;
+  
+  setInterval(_ => {
+    theTimer.innerHTML = `<i class="fas fa-clock"></i> ${digit1}${digit2}:${digit3}${digit4}`;
+    if(digit4 < 9) {
+      digit4 += 1;
+    } else {
+      digit3 += 1;
+      digit4 = 0;
+    }
+
+    if(digit3 < 6) {
+    } else {
+      digit2 += 1;
+      digit3 = 0;
+    }
+
+    if(digit2 < 9) {
+    } else {
+      digit1 += 1;
+      digit2 = 0;
+    }
+  }, 1000);  
+}
 
 function monthToNum(month) {
   switch(month) {
@@ -156,5 +190,11 @@ function canMoveOn() {
 checkoutInput.addEventListener('keypress', event => {
   if(event.key === 'Enter') {
     checkAns(checkoutInput.value == customer.buy.price, checkoutInput);
+  }
+
+  if(checkoutInput.value == customer.buy.price){
+    const theTimer = document.querySelector('.timer-cont h3');
+    alert(`Congratulations you made the sale in ${theTimer.textContent[1]}${theTimer.textContent[2]} Minutes and ${theTimer.textContent[4]}${theTimer.textContent[5]} Seconds, click ok to get a new customer`)
+    window.location.reload();
   }
 })
