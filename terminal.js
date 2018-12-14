@@ -6,6 +6,7 @@ const loginInputs = login.querySelectorAll('input');
 const wrongPass = document.querySelector('.wrong-pass');
 const formInputs = theForm.querySelectorAll('input');
 const formSubmit = theForm.querySelector('.form-submit-btn');
+const paymentForm = terminal.querySelector('.payment-form');
 
 logBtn.addEventListener('click', _ => {
   if(loginInputs[0].value === '' && loginInputs[1].value === ''){
@@ -100,15 +101,32 @@ function checkAll() {
   checkAns(formInputs[7].value == customer.phoneNumber.slice(0,3), formInputs[7]);
   checkAns(formInputs[8].value == customer.phoneNumber.slice(3,6), formInputs[8]);
   checkAns(formInputs[9].value == customer.phoneNumber.slice(6,10), formInputs[9]);
+  canMoveOn();
 }
 
 function checkAns(Expr, elem) {
-  console.log(Expr + ' ' + elem)
   if(Expr) {
     elem.style.color = '#2ecc71';
     elem.style.boxShadow = '0px 0px 5px #2ecc71';
   } else {
     elem.style.color = '#e74c3c';
     elem.style.boxShadow = '0px 0px 5px #e74c3c';
+  }
+}
+
+function canMoveOn() {
+  let right = 0;
+  formInputs.forEach( item => {
+    if(item.style.color == 'rgb(46, 204, 113)') {
+      right += 1;
+    }
+  });
+  console.log(right + ' : ' + formInputs.length);
+  if(right == formInputs.length) {
+    formSubmit.textContent = 'Next';
+    formSubmit.addEventListener('click', _ => {
+      theForm.style.display = 'none';
+      paymentForm.style.display = 'flex';
+    });
   }
 }

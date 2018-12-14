@@ -208,3 +208,7 @@ body {
 .form .form-submit-btn:hover{
   background-color: #50abe7;
 }
+
+.terminal .payment-form {
+  display: none;
+}
