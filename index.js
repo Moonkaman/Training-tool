@@ -20,6 +20,7 @@ class Person {
     this.age = 2018 - this.birthYear;
     this.email = genEmail(`${this.firstName[0]}${this.lastName.toLowerCase()}${Math.floor(Math.random()*9999)}`);
     this.phoneNumber = makePhoneNum();
+    this.patience = Math.floor(Math.random() * (10 - 3) + 3);
     
   }
 
@@ -33,6 +34,7 @@ class Person {
 }
 
 customer = genPerson();
+const totalPat = customer.patience;
 
 function genPerson() {
   if(Math.floor(Math.random()*2)) {

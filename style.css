@@ -34,6 +34,27 @@ body {
   border-radius: 100px;
 }
 
+.customer .pat-label {
+  margin-bottom: 0px;
+}
+
+.customer .patience-cont {
+  height: 10px;
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 1px solid lightgray;
+}
+
+.customer .patience-meter {
+  height: 10px;
+  background-color: #2ecc71;
+  width: 100%;
+  border-radius: 8px;
+  
+  transition: width .5s ease;
+}
+
 .customer .talk-cont {
   background-color: #e74c3c;
   position: relative;
