@@ -33,7 +33,6 @@ class Person {
 }
 
 customer = genPerson();
-console.log(customer);
 
 function genPerson() {
   if(Math.floor(Math.random()*2)) {
