@@ -124,6 +124,7 @@ body {
 
 .terminal .form {
   display: none;
+  width: 249px;
 }
 
 .terminal .wrong-pass {
@@ -131,4 +132,33 @@ body {
   width: 100%;
   text-align: center;
   display: none;
+}
+
+.terminal .birthday input {
+  text-align: center;
+  width: 26%;
+}
+
+.terminal .birthday h2{
+  display: inline;
+  margin: 0 7px;
+}
+
+.terminal .birthday {
+  display: felx;
+}
+
+.terminal .phone-num input {
+  padding: 0px;
+  width: 26%;
+  text-align: center;
+}
+
+.terminal .phone-num h2{
+  display: inline;
+  margin: 0 7px;
+}
+
+.terminal .phone-num {
+  display: felx;
 }

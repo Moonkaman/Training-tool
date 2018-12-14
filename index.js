@@ -19,15 +19,21 @@ class Person {
     this.birthYear = personAttrs.birthYear;
     this.age = 2018 - this.birthYear;
     this.email = genEmail(`${this.firstName[0]}${this.lastName.toLowerCase()}${Math.floor(Math.random()*9999)}`);
+    this.phoneNumber = makePhoneNum();
     
   }
 
   fullName() {
     return `I am ${this.firstName} ${this.lastName}`;
   }
+
+  birthday() {
+    return `It is ${this.birthMonth} ${this.birthDay} ${this.birthYear}`;
+  }
 }
 
 customer = genPerson();
+console.log(customer);
 
 function genPerson() {
   if(Math.floor(Math.random()*2)) {
@@ -86,4 +92,21 @@ function genEmail(email){
       return email + '@zoho.com';
     break;
   }
+}
+
+function makePhoneNum() {
+  let phoneNum = '';
+  if(Math.floor(Math.random()*2)) {
+    phoneNum += '720';
+    for(i=0; i < 7; i++){
+      phoneNum += String(Math.floor(Math.random()*10));
+    }
+  } else {
+    phoneNum += '303';
+    for(i=0; i < 7; i++){
+      phoneNum += String(Math.floor(Math.random()*10));
+    }
+  }
+
+  return phoneNum;
 }

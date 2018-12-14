@@ -4,12 +4,16 @@ const chat = document.querySelector('.talk');
 const chatTimer = document.querySelector('.timer');
 let canClick = true;
 
-btns[0].addEventListener('click', _ => chatBubble());
+btns[0].addEventListener('click', _ => chatBubble(customer.fullName(), 5));
+btns[1].addEventListener('click', _ => chatBubble(customer.phoneNumber, 5));
+btns[2].addEventListener('click', _ => chatBubble(customer.address, 10));
+btns[3].addEventListener('click', _ => chatBubble(customer.email, 5));
+btns[4].addEventListener('click', _ => chatBubble(customer.birthday(), 5));
 
-function chatBubble() {
+function chatBubble(text, delT) {
   if(canClick) {
-    let seconds = 3;
-    chat.textContent = customer.fullName();
+    let seconds = delT;
+    chat.textContent = text;
     chatTimer.textContent = `:${seconds}`;
     const theTimer = window.setInterval(_ => {
       canClick = false;
