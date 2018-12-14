@@ -7,7 +7,7 @@ const wrongPass = document.querySelector('.wrong-pass');
 const formInputs = theForm.querySelectorAll('input');
 
 logBtn.addEventListener('click', _ => {
-  if(loginInputs[0].value === '' && loginInputs[1].value === ''){
+  if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
     login.style.display = 'none';
     theForm.style.display = 'block';
     terminal.style.display = 'block'
