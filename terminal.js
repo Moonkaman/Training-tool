@@ -5,6 +5,7 @@ const theForm = document.querySelector('.form');
 const loginInputs = login.querySelectorAll('input');
 const wrongPass = document.querySelector('.wrong-pass');
 const formInputs = theForm.querySelectorAll('input');
+const formSubmit = theForm.querySelector('.form-submit-btn');
 
 logBtn.addEventListener('click', _ => {
   if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
@@ -16,21 +17,23 @@ logBtn.addEventListener('click', _ => {
   }
 });
 
-terminal.addEventListener('keypress', event => {
-  if(event.key === 'Enter') {
-    checkAns(formInputs[0].value === customer.firstName, formInputs[0]);
-    checkAns(formInputs[1].value === customer.lastName, formInputs[1]);
-    checkAns(formInputs[2].value == monthToNum(customer.birthMonth), formInputs[2]);
-    checkAns(formInputs[3].value == customer.birthDay, formInputs[3]);
-    checkAns(formInputs[4].value == customer.birthYear, formInputs[4]);
-    checkAns(formInputs[5].value == customer.address, formInputs[5]);
-    checkAns(formInputs[6].value == customer.phoneNumber.slice(0,3), formInputs[6]);
-    checkAns(formInputs[7].value == customer.phoneNumber.slice(3,6), formInputs[7]);
-    checkAns(formInputs[8].value == customer.phoneNumber.slice(6,10), formInputs[8]);
+login.addEventListener('keypress', event => {
+  if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
+    login.style.display = 'none';
+    theForm.style.display = 'block';
+    terminal.style.display = 'block'
+  } else {
+    wrongPass.style.display = 'block';
   }
 });
 
-console.log(customer.phoneNumber.slice(0,3));
+theForm.addEventListener('keypress', event => {
+  if(event.key === 'Enter') {
+    checkAll();
+  }
+});
+
+formSubmit.addEventListener('click', _ => checkAll());
 
 function monthToNum(month) {
   switch(month) {
@@ -82,6 +85,18 @@ function monthToNum(month) {
       return 12;
     break;
   }
+}
+
+function checkAll() {
+  checkAns(formInputs[0].value === customer.firstName, formInputs[0]);
+  checkAns(formInputs[1].value === customer.lastName, formInputs[1]);
+  checkAns(formInputs[2].value == monthToNum(customer.birthMonth), formInputs[2]);
+  checkAns(formInputs[3].value == customer.birthDay, formInputs[3]);
+  checkAns(formInputs[4].value == customer.birthYear, formInputs[4]);
+  checkAns(formInputs[5].value == customer.address, formInputs[5]);
+  checkAns(formInputs[6].value == customer.phoneNumber.slice(0,3), formInputs[6]);
+  checkAns(formInputs[7].value == customer.phoneNumber.slice(3,6), formInputs[7]);
+  checkAns(formInputs[8].value == customer.phoneNumber.slice(6,10), formInputs[8]);
 }
 
 function checkAns(Expr, elem) {
