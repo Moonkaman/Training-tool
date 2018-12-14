@@ -8,10 +8,10 @@ const formInputs = theForm.querySelectorAll('input');
 const formSubmit = theForm.querySelector('.form-submit-btn');
 
 logBtn.addEventListener('click', _ => {
-  if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
+  if(loginInputs[0].value === '' && loginInputs[1].value === ''){
     login.style.display = 'none';
     theForm.style.display = 'block';
-    terminal.style.display = 'block'
+    //terminal.style.display = 'block'
   } else {
     wrongPass.style.display = 'block';
   }
@@ -22,7 +22,7 @@ login.addEventListener('keypress', event => {
     if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
       login.style.display = 'none';
       theForm.style.display = 'block';
-      terminal.style.display = 'block'
+      //terminal.style.display = 'block'
     } else {
       wrongPass.style.display = 'block';
     }
@@ -95,13 +95,15 @@ function checkAll() {
   checkAns(formInputs[2].value == monthToNum(customer.birthMonth), formInputs[2]);
   checkAns(formInputs[3].value == customer.birthDay, formInputs[3]);
   checkAns(formInputs[4].value == customer.birthYear, formInputs[4]);
-  checkAns(formInputs[5].value == customer.address, formInputs[5]);
-  checkAns(formInputs[6].value == customer.phoneNumber.slice(0,3), formInputs[6]);
-  checkAns(formInputs[7].value == customer.phoneNumber.slice(3,6), formInputs[7]);
-  checkAns(formInputs[8].value == customer.phoneNumber.slice(6,10), formInputs[8]);
+  checkAns(formInputs[5].value == customer.email, formInputs[5]);
+  checkAns(formInputs[6].value == customer.address, formInputs[6]);
+  checkAns(formInputs[7].value == customer.phoneNumber.slice(0,3), formInputs[7]);
+  checkAns(formInputs[8].value == customer.phoneNumber.slice(3,6), formInputs[8]);
+  checkAns(formInputs[9].value == customer.phoneNumber.slice(6,10), formInputs[9]);
 }
 
 function checkAns(Expr, elem) {
+  console.log(Expr + ' ' + elem)
   if(Expr) {
     elem.style.color = '#2ecc71';
     elem.style.boxShadow = '0px 0px 5px #2ecc71';
