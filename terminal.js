@@ -6,10 +6,16 @@ const loginInputs = login.querySelectorAll('input');
 const wrongPass = document.querySelector('.wrong-pass');
 const formInputs = theForm.querySelectorAll('input');
 const formSubmit = theForm.querySelector('.form-submit-btn');
-const paymentForm = terminal.querySelector('.payment-form');
+const checkout = terminal.querySelector('.payment-form');
+const userH1 = document.querySelector('.customer h1');
+const checkoutH3s = checkout.querySelectorAll('h3');
+const checkoutInput = checkout.querySelector('input');
+
+
 
 logBtn.addEventListener('click', _ => {
   if(loginInputs[0].value === '' && loginInputs[1].value === ''){
+    userH1.textContent = username;
     login.style.display = 'none';
     theForm.style.display = 'block';
     //terminal.style.display = 'block'
@@ -21,6 +27,7 @@ logBtn.addEventListener('click', _ => {
 login.addEventListener('keypress', event => {
   if(event.key === 'Enter') {
     if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
+      userH1.textContent = username;
       login.style.display = 'none';
       theForm.style.display = 'block';
       //terminal.style.display = 'block'
@@ -33,6 +40,19 @@ login.addEventListener('keypress', event => {
 theForm.addEventListener('keypress', event => {
   if(event.key === 'Enter') {
     checkAll();
+  }
+
+  if(event.key === '~') {
+    formInputs[0].value = customer.firstName;
+    formInputs[1].value = customer.lastName;
+    formInputs[2].value = monthToNum(customer.birthMonth);
+    formInputs[3].value = customer.birthDay;
+    formInputs[4].value = customer.birthYear;
+    formInputs[5].value = customer.email;
+    formInputs[6].value = customer.address;
+    formInputs[7].value = customer.phoneNumber.slice(0,3);
+    formInputs[8].value = customer.phoneNumber.slice(3,6);
+    formInputs[9].value = customer.phoneNumber.slice(6,10);
   }
 });
 
@@ -125,7 +145,16 @@ function canMoveOn() {
     formSubmit.textContent = 'Next';
     formSubmit.addEventListener('click', _ => {
       theForm.style.display = 'none';
-      paymentForm.style.display = 'flex';
+      checkout.style.display = 'block';
+      checkoutH3s[2].textContent = `Total before sale & tax: $${customer.buy.beforePrice}`;
+      checkoutH3s[0].textContent = `Type: ${customer.buy.type}`;
+      checkoutH3s[1].textContent = `Sale: ${customer.buy.sale}%`;
     });
   }
 }
+
+checkoutInput.addEventListener('keypress', event => {
+  if(event.key === 'Enter') {
+    checkAns(checkoutInput.value == customer.buy.price, checkoutInput);
+  }
+})

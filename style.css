@@ -108,6 +108,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 50px;
+  overflow: auto;
 }
 
 .terminal input {
@@ -211,4 +212,16 @@ body {
 
 .terminal .payment-form {
   display: none;
+}
+
+.terminal .payment-form .price-input-cont {
+  display: flex;
+}
+
+.price-input-cont h2 {
+  margin: 0px 7px 0px 0px;
+}
+
+.price-input-cont input {
+  width: 100%;
 }

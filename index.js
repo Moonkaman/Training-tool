@@ -1,11 +1,13 @@
-//console.log(boyNames[Math.floor(Math.random() * boyNames.length)] + ' ' + lastNames[Math.floor(Math.random() * lastNames.length)]);
-//console.log(girlNames[Math.floor(Math.random() * girlNames.length)] + ' ' + lastNames[Math.floor(Math.random() * lastNames.length)]);
 
-//addresses.forEach(item => console.log(item.address1));
 
-months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-//people = [];
+class Jewlry {
+  constructor(jewlryAttrs) {
+    this.type = choose(['Necklace', 'Ring', 'Bracelet', 'Earrings']);
+    this.beforePrice = Math.floor(Math.random() * (10000 - 100) + 100);
+    this.sale = choose([5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75]);
+    this.price = jewlryPrice(this.beforePrice, this.sale);
+  }
+}
 
 class Person {
   constructor(personAttrs) {
@@ -21,6 +23,7 @@ class Person {
     this.email = genEmail(`${this.firstName[0]}${this.lastName.toLowerCase()}${Math.floor(Math.random()*9999)}`);
     this.phoneNumber = makePhoneNum();
     this.patience = Math.floor(Math.random() * (10 - 3) + 3);
+    this.buy = new Jewlry();
     
   }
 
@@ -33,8 +36,12 @@ class Person {
   }
 }
 
+let months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 customer = genPerson();
 const totalPat = customer.patience;
+const username = 'Sbat'
+const pass = '1234'
 
 function genPerson() {
   if(Math.floor(Math.random()*2)) {
@@ -110,4 +117,17 @@ function makePhoneNum() {
   }
 
   return phoneNum;
+}
+
+function choose(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function jewlryPrice(price, sale) {
+  let newPrice = price * (1 - (sale / 100));
+
+  newPrice = Math.round(newPrice * 100) / 100;
+
+  newPrice *= 1.08;
+  return Math.round(newPrice * 100) / 100;
 }
