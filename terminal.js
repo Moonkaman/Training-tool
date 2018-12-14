@@ -18,12 +18,14 @@ logBtn.addEventListener('click', _ => {
 });
 
 login.addEventListener('keypress', event => {
-  if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
-    login.style.display = 'none';
-    theForm.style.display = 'block';
-    terminal.style.display = 'block'
-  } else {
-    wrongPass.style.display = 'block';
+  if(event.key === 'Enter') {
+    if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
+      login.style.display = 'none';
+      theForm.style.display = 'block';
+      terminal.style.display = 'block'
+    } else {
+      wrongPass.style.display = 'block';
+    }
   }
 });
 
