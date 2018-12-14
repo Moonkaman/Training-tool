@@ -89,6 +89,15 @@ function timer() {
       digit1 += 1;
       digit2 = 0;
     }
+
+    if(digit2 % 3 == 0 && digit3 == 0 && digit4 == 0){
+      customer.patience--;
+      patienceMeter.style.width = `${(customer.patience / totalPat) * 100}%`
+      if(customer.patience == 0) {
+        alert('You lost the customer');
+        window.location.reload();
+      }
+    }
   }, 1000);  
 }
 
