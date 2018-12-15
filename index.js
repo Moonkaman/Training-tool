@@ -51,7 +51,7 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
     }
   });
 
-  console.log(cookies);
+  console.log(usrpas);
 
   username = usrpas[0].slice(11, usrpas[0].length);
   pass = usrpas[1].slice(7, usrpas[1].length);
@@ -65,7 +65,7 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
       return aCookie;
     }
   });
-  console.log(cookies);
+  console.log(usrpas);
 
   username = usrpas[0].slice(11, usrpas[0].length);
   pass = usrpas[1].slice(7, usrpas[1].length);
