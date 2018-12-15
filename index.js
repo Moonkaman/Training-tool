@@ -189,9 +189,9 @@ function jewlryPrice(price, sale) {
     newPrice += 449.99
   }
 
-  return (Math.round(newPrice * 100) / 100);
-
   newPrice *= 1.08;
 
   newPrice = Math.round(newPrice * 100) / 100;
+
+  return (Math.round(newPrice * 100) / 100);
 }
