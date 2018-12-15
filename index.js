@@ -57,7 +57,9 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
   document.cookie = `nbpass=${prompt('Enter a Password')}`;
 
   let cookies = document.cookie.split('; ').map( aCookie => {
-    return aCookie.includes('nbusername' || 'nbpass');
+    if(aCookie.includes('nbusername' || 'nbpass')) {
+      return aCookie;
+    }
   });
 
   console.log(cookies);
