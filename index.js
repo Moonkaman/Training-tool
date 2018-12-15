@@ -151,10 +151,6 @@ function jewlryPrice(price, sale) {
 
   newPrice = Math.round(newPrice * 100) / 100;
 
-  newPrice *= 1.08;
-
-  newPrice = Math.round(newPrice * 100) / 100;
-
   if(newPrice < 75) {
     newPrice += 19.99;
   }else if(newPrice < 99.99 && newPrice > 75) {
@@ -194,4 +190,8 @@ function jewlryPrice(price, sale) {
   }
 
   return (Math.round(newPrice * 100) / 100);
+
+  newPrice *= 1.08;
+
+  newPrice = Math.round(newPrice * 100) / 100;
 }
