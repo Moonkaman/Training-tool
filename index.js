@@ -44,7 +44,8 @@ let username = '';
 let pass = '';
 
 if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass')) {
-  let cookies = document.cookie.split('; ').map( aCookie => {
+  let cookies = document.cookie.split('; ');
+  let usrpas = cookies.map( aCookie => {
     if(aCookie.includes('nbusername') || aCookie.includes('nbpass')) {
       return aCookie;
     }
@@ -52,22 +53,22 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
 
   console.log(cookies);
 
-  username = cookies[0].slice(11, cookies[0].length);
-  pass = cookies[1].slice(7, cookies[1].length);
+  username = usrpas[0].slice(11, usrpas[0].length);
+  pass = usrpas[1].slice(7, usrpas[1].length);
 } else {
   document.cookie = `nbusername=${prompt('Enter a Username')}`;
   document.cookie = `nbpass=${prompt('Enter a Password')}`;
 
-  let cookies = document.cookie.split('; ').map( aCookie => {
+  let cookies = document.cookie.split('; ');
+  let usrpas = cookies.map( aCookie => {
     if(aCookie.includes('nbusername') || aCookie.includes('nbpass')) {
       return aCookie;
     }
   });
-
   console.log(cookies);
 
-  username = cookies[0].slice(11, cookies[0].length);
-  pass = cookies[1].slice(7, cookies[1].length);
+  username = usrpas[0].slice(11, usrpas[0].length);
+  pass = usrpas[1].slice(7, usrpas[1].length);
 }
 
 function genPerson() {
