@@ -14,7 +14,7 @@ const checkoutInput = checkout.querySelector('input');
 
 
 logBtn.addEventListener('click', _ => {
-  if(loginInputs[0].value === '' && loginInputs[1].value === ''){
+  if(loginInputs[0].value === username && loginInputs[1].value === pass){
     userH1.textContent = username;
     login.style.display = 'none';
     theForm.style.display = 'block';
@@ -27,7 +27,7 @@ logBtn.addEventListener('click', _ => {
 
 login.addEventListener('keypress', event => {
   if(event.key === 'Enter') {
-    if(loginInputs[0].value === 'admin' && loginInputs[1].value === 'password'){
+    if(loginInputs[0].value === username && loginInputs[1].value === pass){
       userH1.textContent = username;
       login.style.display = 'none';
       theForm.style.display = 'block';
