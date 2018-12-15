@@ -42,15 +42,20 @@ customer = genPerson();
 const totalPat = customer.patience;
 let username = '';
 let pass = '';
+
 if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass')) {
   username = document.cookie.split('; ')[1].slice(11, document.cookie.split('; ')[1].length);
   pass = document.cookie.split('; ')[2].slice(7, document.cookie.split('; ')[2].length);
 } else {
   document.cookie = `nbusername=${prompt('Enter a Username')}`;
   document.cookie = `nbpass=${prompt('Enter a Password')}`;
-  document.cookie = 'test=yes';
-  username = document.cookie.split('; ')[1].slice(11, document.cookie.split('; ')[1].length);
-  pass = document.cookie.split('; ')[2].slice(7, document.cookie.split('; ')[2].length);
+
+  let cookies = document.cookie.split('; ').map( aCookie => {
+    return aCookie.includes('nbusername' || 'nbpass');
+  });
+
+  username = cookies[0].slice(11, cookies[0].length);
+  pass = cookies[1].slice(7, cookies[1].length);
 }
 
 function genPerson() {
