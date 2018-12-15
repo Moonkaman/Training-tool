@@ -50,21 +50,17 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
     }
   });
 
-  console.log(cookies);
-
   username = cookies[0].slice(11, cookies[0].length);
   pass = cookies[1].slice(7, cookies[1].length);
 } else {
-  document.cookie = `nbusername=${prompt('Enter a Username')}`;
-  document.cookie = `nbpass=${prompt('Enter a Password')}`;
+  document.cookie = `nbusername=${prompt('Create a Username')}`;
+  document.cookie = `nbpass=${prompt('Create a Password')}`;
 
   let cookies = document.cookie.split('; ').filter( aCookie => {
     if(aCookie.includes('nbusername') || aCookie.includes('nbpass')) {
       return aCookie;
     }
   });
-
-  console.log(cookies);
 
   username = cookies[0].slice(11, cookies[0].length);
   pass = cookies[1].slice(7, cookies[1].length);
