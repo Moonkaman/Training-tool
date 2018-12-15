@@ -48,6 +48,8 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
     return aCookie.includes('nbusername' || 'nbpass');
   });
 
+  console.log(cookies);
+
   username = cookies[0].slice(11, cookies[0].length);
   pass = cookies[1].slice(7, cookies[1].length);
 } else {
@@ -57,6 +59,8 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
   let cookies = document.cookie.split('; ').map( aCookie => {
     return aCookie.includes('nbusername' || 'nbpass');
   });
+
+  console.log(cookies);
 
   username = cookies[0].slice(11, cookies[0].length);
   pass = cookies[1].slice(7, cookies[1].length);
