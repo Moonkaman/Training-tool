@@ -216,6 +216,7 @@ body {
 
 .terminal .payment-form {
   display: none;
+  width: 462px;
 }
 
 .terminal .payment-form .price-input-cont {
@@ -228,4 +229,13 @@ body {
 
 .price-input-cont input {
   width: 100%;
+}
+
+.terminal .payment-form table {
+  width: 100%;
+  text-align: left;
+}
+
+.terminal .payment-form td {
+  border-bottom: 1px solid white;
 }

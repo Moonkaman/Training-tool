@@ -40,8 +40,18 @@ let months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'Au
 
 customer = genPerson();
 const totalPat = customer.patience;
-const username = 'Sbat'
-const pass = '1234'
+let username = '';
+let pass = '';
+if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass')) {
+  username = document.cookie.split('; ')[0]
+  pass = document.cookie.split('; ')[1]
+} else {
+  document.cookie = `nbusername=${prompt('Enter a Username')}`;
+  document.cookie = `nbpass=${prompt('Enter a Password')}`;
+  document.cookie = 'test=yes';
+  username = document.cookie.split('; ')[0];
+  pass = document.cookie.split('; ')[1];
+}
 
 function genPerson() {
   if(Math.floor(Math.random()*2)) {
@@ -129,5 +139,46 @@ function jewlryPrice(price, sale) {
   newPrice = Math.round(newPrice * 100) / 100;
 
   newPrice *= 1.08;
-  return Math.round(newPrice * 100) / 100;
+
+  newPrice = Math.round(newPrice * 100) / 100;
+
+  if(newPrice < 75) {
+    newPrice += 19.99;
+  }else if(newPrice < 99.99 && newPrice > 75) {
+    newPrice += 29.99
+  }else if(newPrice < 149.99 && newPrice > 99.99) {
+    newPrice += 39.99
+  }else if(newPrice < 199.99 && newPrice > 149.99) {
+    newPrice += 49.99
+  }else if(newPrice < 249.99 && newPrice > 199.99) {
+    newPrice += 59.99
+  }else if(newPrice < 299.99 && newPrice > 249.99) {
+    newPrice += 69.99
+  }else if(newPrice < 349.99 && newPrice > 299.99) {
+    newPrice += 74.99
+  }else if(newPrice < 399.99 && newPrice > 349.99) {
+    newPrice += 89.99
+  }else if(newPrice < 499.99 && newPrice > 399.99) {
+    newPrice += 94.99
+  }else if(newPrice < 599.99 && newPrice > 499.99) {
+    newPrice += 109.99
+  }else if(newPrice < 799.99 && newPrice > 599.99) {
+    newPrice += 119.99
+  }else if(newPrice < 999.99 && newPrice > 799.99) {
+    newPrice += 129.99
+  }else if(newPrice < 1499.99 && newPrice > 999.99) {
+    newPrice += 149.99
+  }else if(newPrice < 1999.99 && newPrice > 1499.99) {
+    newPrice += 169.99
+  }else if(newPrice < 2999.99 && newPrice > 1999.99) {
+    newPrice += 199.99
+  }else if(newPrice < 4999.99 && newPrice > 2999.99) {
+    newPrice += 249.99
+  }else if(newPrice < 9999.99 && newPrice > 4999.99) {
+    newPrice += 349.99
+  }else if(newPrice < 49999.99 && newPrice > 9999.99) {
+    newPrice += 449.99
+  }
+
+  return (Math.round(newPrice * 100) / 100);
 }
