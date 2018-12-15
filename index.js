@@ -43,14 +43,14 @@ const totalPat = customer.patience;
 let username = '';
 let pass = '';
 if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass')) {
-  username = document.cookie.split('; ')[0]
-  pass = document.cookie.split('; ')[1]
+  username = document.cookie.split('; ')[1].slice(11, document.cookie.split('; ')[1].length);
+  pass = document.cookie.split('; ')[2].slice(7, document.cookie.split('; ')[2].length);
 } else {
   document.cookie = `nbusername=${prompt('Enter a Username')}`;
   document.cookie = `nbpass=${prompt('Enter a Password')}`;
   document.cookie = 'test=yes';
-  username = document.cookie.split('; ')[0];
-  pass = document.cookie.split('; ')[1];
+  username = document.cookie.split('; ')[1].slice(11, document.cookie.split('; ')[1].length);
+  pass = document.cookie.split('; ')[2].slice(7, document.cookie.split('; ')[2].length);
 }
 
 function genPerson() {
