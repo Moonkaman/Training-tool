@@ -45,7 +45,7 @@ let pass = '';
 
 if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass')) {
   let cookies = document.cookie.split('; ').map( aCookie => {
-    if(aCookie.includes('nbusername' || 'nbpass')) {
+    if(aCookie.includes('nbusername') || aCookie.includes('nbpass')) {
       return aCookie;
     }
   });
@@ -59,7 +59,7 @@ if(document.cookie.includes('nbusername') && document.cookie.includes('nbpass'))
   document.cookie = `nbpass=${prompt('Enter a Password')}`;
 
   let cookies = document.cookie.split('; ').map( aCookie => {
-    if(aCookie.includes('nbusername' || 'nbpass')) {
+    if(aCookie.includes('nbusername') || aCookie.includes('nbpass')) {
       return aCookie;
     }
   });
